@@ -9,7 +9,7 @@
             int points = 3;
             int flip;
             string choice, result;
-            randNum = generator.Next(1, 2);
+           
 
 
             while (points > 0)
@@ -17,7 +17,7 @@
                 Console.WriteLine("Press enter to play the game");
                 Console.ReadLine();
                 Console.Clear();
-                Console.WriteLine("You have " + points + " amount of points");
+                Console.WriteLine("You have " + points + " points");
                 Console.WriteLine("im going to flip a coin, make your decision");
                 Console.Write("Choose 'heads', 'tails, or 'quit': ");
                 choice = Console.ReadLine().ToLower();
@@ -30,10 +30,11 @@
 
                 if (choice != "heads" && choice != "tails")
                 {
-                    Console.WriteLine("Invalid choice. Please choose heads, tails or quit")
+                    Console.WriteLine("Invalid choice. Please choose heads, tails or quit");
                     continue;
                 }
 
+                randNum = generator.Next(2);
                 result = randNum == 0 ? "heads" : "tails";
                 Console.WriteLine("the coin landed on " + result);
 
@@ -42,9 +43,14 @@
                     points++;
                     Console.WriteLine("You guessed correctly! +1 point.");
                 }
+                else
+                {
+                    points--;
+                    Console.WriteLine("Wrong guess. -1 point.");
+                }
             }
 
-            
+            Console.WriteLine("You ran out of points. Game over!");
 
 
 
